@@ -1,0 +1,10 @@
+create_parking_lot 6
+park KA-01-HH-1234 driver_age 21
+park KA-01-HH-1234 driver_age 21
+park PB-01-HH-1234 driver_age 21
+slot_numbers_for_driver_of_age 21
+park PB-01-TG-2341 driver_age 40
+slot_number_for_car_with_number PB-01-HH-1234
+leave 2
+park HR-29-TG-3098 driver_age 39
+vehicle_registration_number_for_drive_of_age 18
