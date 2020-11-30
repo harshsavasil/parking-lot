@@ -28,10 +28,14 @@ class ParkingLot:
         Returns:
             [Integer]: returns the maximum numbers of parking spaces
         """
-        self.slots = [ParkingLot.EMPTY_SLOT] * capacity
-        self._capacity = capacity
-        self.ageSlotMap = defaultdict(list)
-        return self._capacity
+        if capacity <= 0:
+            logging.error('Number of Parking Spots must be greater than zero')
+            return None
+        else:
+            self.slots = [ParkingLot.EMPTY_SLOT] * capacity
+            self._capacity = capacity
+            self.ageSlotMap = defaultdict(list)
+            return self._capacity
 
     def _getEmptySlot(self):
         """
@@ -149,7 +153,11 @@ class ParkingLot:
         elif PARKING_LOT_COMMANDS[command] == ParkingLotCommand.CREATE_PARKING_LOT:
             numOfSlots = int(commandLine.split(' ')[1])
             slots = self.createParkingLot(numOfSlots)
-            logging.info('Created parking of ' + str(slots) + ' slots')
+            if slots:
+                logging.info('Created parking of ' + str(slots) + ' slots')
+            else:
+                logging.info('Unable to create a parking lot')
+                sys.exit(-1)
 
         elif PARKING_LOT_COMMANDS[command] == ParkingLotCommand.PARK:
             registration_number = commandLine.split(' ')[1]
