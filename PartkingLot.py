@@ -152,9 +152,9 @@ class ParkingLot:
 
         elif PARKING_LOT_COMMANDS[command] == ParkingLotCommand.CREATE_PARKING_LOT:
             numOfSlots = int(commandLine.split(' ')[1])
-            slots = self.createParkingLot(numOfSlots)
-            if slots:
-                logging.info('Created parking of ' + str(slots) + ' slots')
+            capacity = self.createParkingLot(numOfSlots)
+            if capacity:
+                logging.info('Created parking of ' + str(capacity) + ' slots')
             else:
                 logging.info('Unable to create a parking lot')
                 sys.exit(-1)

@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "-f", "input.txt"
+                "-f", "sample-inputs/test-case-2.txt"
             ]
         }
     ]
