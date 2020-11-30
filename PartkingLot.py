@@ -171,13 +171,22 @@ class ParkingLot:
 
         elif PARKING_LOT_COMMANDS[command] == ParkingLotCommand.SLOT_NUMBERS_FOR_DRIVER_OF_AGE:
             driver_age = int(commandLine.split(' ')[1])
-            slots = self.getSlotsFromDriversAge(driver_age)
-            logging.info(', '.join(slots))
+            slotIds = self.getSlotsFromDriversAge(driver_age)
+            logging.info(', '.join(slotIds))
 
         elif PARKING_LOT_COMMANDS[command] == ParkingLotCommand.SLOT_NUMBER_FOR_CAR_WITH_NUMBER:
             registration_number = commandLine.split(' ')[1]
             slotId = self.getSlotFromRegistrationNumber(registration_number)
             logging.info(slotId)
+
+        elif PARKING_LOT_COMMANDS[command] == ParkingLotCommand.VEHICLE_REGISTRATION_NUMBER_FOR_DRIVE_OF_AGE:
+            driver_age = int(commandLine.split(' ')[1])
+            slotIds = [
+                int(index) - 1 for index in self.getSlotsFromDriversAge(driver_age)]
+            slots = [self.slots[index]
+                     for index in range(len(self.slots)) if index in slotIds]
+            vehicle_numbers = [vehicle.registration_number for vehicle in slots]
+            logging.info(', '.join(vehicle_numbers))
         else:
             exit(0)
 
