@@ -156,7 +156,7 @@ class ParkingLot:
             driver_age = int(commandLine.split(' ')[3])
             allocated_parking_spot = self.park(registration_number, driver_age)
             if allocated_parking_spot == ParkingLot.EMPTY_SLOT:
-                print("Sorry, parking lot is full")
+                logging.info("Parking lot is full!")
             else:
                 logging.info('Car with vehicle registration number "{0}" has been parked at slot number {1}'.format(
                     registration_number, allocated_parking_spot
